@@ -13,6 +13,15 @@ const requests = {
         daily_calories_goal: caloriesGoal
       }
     })
+  },
+  
+  login: (email, password) => {
+    return axios.post('/sessions', {
+      session: {
+        email: email,
+        password: password
+      }
+    })
   }
 };
 
