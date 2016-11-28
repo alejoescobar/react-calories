@@ -3,7 +3,7 @@ import FieldGroup from '../components/FieldGroup'
 import requests from '../requestsHelper'
 import AlertDismissable from '../components/AlertDismissable'
 import { Button } from 'react-bootstrap'
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 
 class Login extends Component {
 
@@ -33,11 +33,11 @@ class Login extends Component {
     const password = this.state.password
     requests.login(userEmail, password)
     .then((response) => {
-      console.log('logged in!')
       const user = response.data
       sessionStorage.setItem('userId', user.id)
       sessionStorage.setItem('userEmail', user.email)
       sessionStorage.setItem('userAuthToken', user.auth_token)
+      browserHistory.push('/calories')
     })
     .catch((error) => {
       this.setState({ errors: error.response.data.errors })
