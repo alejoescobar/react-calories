@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import FieldGroup from '../components/FieldGroup'
 import requests from '../requestsHelper'
+import AlertDismissable from '../components/AlertDismissable'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router'
 
@@ -10,7 +11,8 @@ class Login extends Component {
     super(props)
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      errors: []
     }
     this.updateEmail = this.updateEmail.bind(this)
     this.updatePassword = this.updatePassword.bind(this)
@@ -38,14 +40,18 @@ class Login extends Component {
       sessionStorage.setItem('userAuthToken', user.auth_token)
     })
     .catch((error) => {
-      console.log('error!')
+      this.setState({ errors: error.response.data.errors })
     })
   }
 
   render () {
+    const alerts = this.state.errors.map((message, index) =>
+      <AlertDismissable key={index} message={message}/>
+    )
     return (
       <div className="col-sm-4 col-sm-offset-4">
         <h1>Login</h1>
+        {alerts}
         <form onSubmit={this.handleSubmit}>
           <FieldGroup
             id="email"
