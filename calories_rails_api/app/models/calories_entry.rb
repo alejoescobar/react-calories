@@ -14,5 +14,5 @@
 class CaloriesEntry < ApplicationRecord
   belongs_to :user
 
-  validates_presence_of :date, :num_of_calories, :title 
+  validates_presence_of :date, :calories_amount, :title 
 end
