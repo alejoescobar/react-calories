@@ -5,7 +5,7 @@ class RegistrationsController < ApplicationController
     if user.save
       render json: user, status: 201
     else
-      render json: { errors: user.errors }, status: 400
+      render json: { errors: user.errors.full_messages }, status: 400
     end
   end
 
@@ -14,5 +14,5 @@ class RegistrationsController < ApplicationController
     def user_params
       params.require(:user).permit(:email, :password, :daily_calories_goal)
     end
-    
+
 end
