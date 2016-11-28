@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import FieldGroup from './FieldGroup'
+import FieldGroup from '../components/FieldGroup'
 import { Button } from 'react-bootstrap'
 import { Link, browserHistory } from 'react-router'
-import AlertDismissable from './AlertDismissable'
-import requests from './requestsHelper'
+import AlertDismissable from '../components/AlertDismissable'
+import requests from '../requestsHelper'
 
 class Registration extends Component {
 

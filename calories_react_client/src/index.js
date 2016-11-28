@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import Registration from './Registration'
-import Login from './Login'
+import App from './views/App';
+import Registration from './views/Registration'
+import Login from './views/Login'
 import { Router, Route, browserHistory } from 'react-router'
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import FieldGroup from './FieldGroup'
+import FieldGroup from '../components/FieldGroup'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router'
 
