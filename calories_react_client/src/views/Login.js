@@ -32,7 +32,10 @@ class Login extends Component {
     requests.login(userEmail, password)
     .then((response) => {
       console.log('logged in!')
-      console.log(response)
+      const user = response.data
+      sessionStorage.setItem('userId', user.id)
+      sessionStorage.setItem('userEmail', user.email)
+      sessionStorage.setItem('userAuthToken', user.auth_token)
     })
     .catch((error) => {
       console.log('error!')
