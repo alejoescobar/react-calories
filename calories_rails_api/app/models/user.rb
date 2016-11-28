@@ -21,4 +21,18 @@ class User < ApplicationRecord
 
   enum role: [:user, :manager, :admin]
 
+  def authenticate(password)
+    authorized = super(password)
+    if authorized
+      self.auth_token = User.generate_unique_secure_token
+      self.save
+    end
+    authorized
+  end
+
+  def sign_out
+    self.auth_token = User.generate_unique_secure_token
+    self.save
+  end
+
 end
