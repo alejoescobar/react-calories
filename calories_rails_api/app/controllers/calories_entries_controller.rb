@@ -1,7 +1,7 @@
 class CaloriesEntriesController < ApplicationController
 
   def index
-    render json: current_user.calories_entries, status: :ok
+    render json: current_user.calories_entries.group_by_day, status: :ok
   end
 
   def create
