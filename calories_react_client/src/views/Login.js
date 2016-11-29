@@ -36,7 +36,7 @@ class Login extends Component {
       const user = response.data
       sessionStorage.setItem('userId', user.id)
       sessionStorage.setItem('userEmail', user.email)
-      sessionStorage.setItem('userAuthToken', user.auth_token)
+      sessionStorage.setItem('userCaloriesGoal', user.daily_calories_goal)  
       browserHistory.push('/calories')
     })
     .catch((error) => {

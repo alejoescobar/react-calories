@@ -16,14 +16,23 @@ class CaloriesEntry < ApplicationRecord
 
   validates_presence_of :date, :calories_amount, :title
 
-  scope :group_by_day, -> { all.group_by { |entry| entry.date.to_date.to_s } }
+  scope :group_by_day, -> {
+    all.group_by { |entry| entry.date.to_date.strftime('%a, %e %b %Y') }
+      .map { |day, entries| { day: day, entries: entries } }
+  }
 
   def day
-    self.date.strftime('%a, %e %b %Y')
+    self.date.strftime('%a, %-e %b %Y')
   end
 
   def time
-    self.date.strftime('%l:%M %p')
+    self.date.strftime('%-l:%M %p')
+  end
+
+  def as_json(opts)
+    opts[:only] ||= [:id, :title, :calories_amount, :user_id]
+    opts[:methods] ||= [:day, :time]
+    super
   end
 
 end

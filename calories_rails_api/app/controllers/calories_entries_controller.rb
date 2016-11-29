@@ -1,7 +1,8 @@
 class CaloriesEntriesController < ApplicationController
 
   def index
-    render json: current_user.calories_entries.group_by_day, status: :ok
+    render json: current_user.calories_entries.order(date: :desc)
+      .group_by_day
   end
 
   def create
