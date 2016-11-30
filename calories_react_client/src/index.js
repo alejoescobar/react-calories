@@ -5,6 +5,7 @@ import Registration from './views/Registration'
 import Login from './views/Login'
 import Calories from './views/Calories'
 import UserNav from './views/UserNav'
+import NewCaloriesEntry from './views/NewCaloriesEntry'
 import { Router, Route, browserHistory } from 'react-router'
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -17,6 +18,7 @@ ReactDOM.render(
     <Route path="/login" component={Login} />
     <Route component={UserNav}>
       <Route path="/calories" component={Calories} />
+      <Route path="/calories/new" component={NewCaloriesEntry} />
     </Route>
   </Router>,
   document.getElementById('root')

@@ -34,6 +34,16 @@ const requests = {
 
   getCaloriesEntries: () => {
     return axios.get('/calories_entries')
+  },
+
+  createCaloriesEntry: (title, caloriesAmount, date) => {
+    return axios.post('/calories_entries', {
+      calories_entry: {
+        title: title,
+        calories_amount: caloriesAmount,
+        date: date
+      }
+    })
   }
 };
 
