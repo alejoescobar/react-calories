@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :calories_entries, except: [:show]
+  resources :calories_entries
 
   # Auth routes
   resources :registrations, only: [:create]

@@ -1,8 +1,13 @@
 class CaloriesEntriesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     render json: current_user.calories_entries.order(date: :desc)
       .group_by_day
+  end
+
+  def show
+    render json: current_user.calories_entries.find(params[:id])
   end
 
   def create
