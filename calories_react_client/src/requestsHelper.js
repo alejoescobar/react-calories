@@ -36,9 +36,24 @@ const requests = {
     return axios.get('/calories_entries')
   },
 
+  showCaloriesEntry: (entryId) => {
+    return axios.get(`/calories_entries/${entryId}`)
+  },
+
   createCaloriesEntry: (title, caloriesAmount, date) => {
     return axios.post('/calories_entries', {
       calories_entry: {
+        title: title,
+        calories_amount: caloriesAmount,
+        date: date
+      }
+    })
+  },
+
+  updateCaloriesEntry: (entryId, title, caloriesAmount, date) => {
+    return axios.put(`/calories_entries/${entryId}`, {
+      calories_entry: {
+        id: entryId,
         title: title,
         calories_amount: caloriesAmount,
         date: date

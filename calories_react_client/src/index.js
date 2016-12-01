@@ -6,6 +6,7 @@ import Login from './views/Login'
 import Calories from './views/Calories'
 import UserNav from './views/UserNav'
 import NewCaloriesEntry from './views/NewCaloriesEntry'
+import EditCaloriesEntry from './views/EditCaloriesEntry'
 import { Router, Route, browserHistory } from 'react-router'
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -19,6 +20,7 @@ ReactDOM.render(
     <Route component={UserNav}>
       <Route path="/calories" component={Calories} />
       <Route path="/calories/new" component={NewCaloriesEntry} />
+      <Route path="/calories/edit/:entryId" component={EditCaloriesEntry} />
     </Route>
   </Router>,
   document.getElementById('root')

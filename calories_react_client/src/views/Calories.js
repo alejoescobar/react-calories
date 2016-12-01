@@ -32,7 +32,7 @@ class Calories extends Component {
     )
     return (
       <div>
-        <Button bsClass="btn btn-success pull-right" onClick={this.newCaloriesEntryPath} pullRight>
+        <Button bsClass="btn btn-success pull-right" onClick={this.newCaloriesEntryPath}>
           Create new entry
         </Button>
         <h1>Listing Calories</h1>
