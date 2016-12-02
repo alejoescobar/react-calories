@@ -4,6 +4,7 @@ import requests from '../requestsHelper'
 import AlertDismissable from '../components/AlertDismissable'
 import { Button } from 'react-bootstrap'
 import { Link, browserHistory } from 'react-router'
+import cookie from 'react-cookie'
 
 class Login extends Component {
 
@@ -34,9 +35,12 @@ class Login extends Component {
     requests.login(userEmail, password)
     .then((response) => {
       const user = response.data
-      sessionStorage.setItem('userId', user.id)
-      sessionStorage.setItem('userEmail', user.email)
-      sessionStorage.setItem('userCaloriesGoal', user.daily_calories_goal)  
+      // sessionStorage.setItem('userId', user.id)
+      // sessionStorage.setItem('userEmail', user.email)
+      // sessionStorage.setItem('userCaloriesGoal', user.daily_calories_goal)
+      cookie.save('userId', user.id)
+      cookie.save('userEmail', user.email)
+      cookie.save('userCaloriesGoal', user.daily_calories_goal)
       browserHistory.push('/calories')
     })
     .catch((error) => {

@@ -1,10 +1,11 @@
 import axios from 'axios'
+import cookie from 'react-cookie'
 
 if (process.env.NODE_ENV === 'development') {
   axios.defaults.baseURL = 'http://localhost:3000'
 }
-if (sessionStorage.getItem('userAuthToken')) {
-  axios.defaults.headers.common['Authorization'] = sessionStorage.getItem('userAuthToken')
+if (cookie.load('userAuthToken')) {
+  axios.defaults.headers.common['Authorization'] = cookie.load('userAuthToken')
 }
 
 const requests = {
@@ -26,7 +27,7 @@ const requests = {
       }
     }).then((response) => {
       const user = response.data
-      sessionStorage.setItem('userAuthToken', user.auth_token)
+      cookie.save('userAuthToken', user.auth_token)
       axios.defaults.headers.common['Authorization'] = user.auth_token
       return response
     })
@@ -59,6 +60,10 @@ const requests = {
         date: date
       }
     })
+  },
+
+  deleteCaloriesEntry: (entryId) => {
+    return axios.delete(`/calories_entries/${entryId}`)
   }
 };
 
