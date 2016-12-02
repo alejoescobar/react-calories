@@ -3,6 +3,8 @@ import { Table, ListGroup, ListGroupItem, Button } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
 import requests from '../requestsHelper'
 import DailyCalories from '../components/DailyCalories'
+import { reject } from 'lodash'
+
 
 class Calories extends Component {
   constructor(props) {
@@ -10,6 +12,7 @@ class Calories extends Component {
     this.state = {
       caloriesEntries: []
     }
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
@@ -19,17 +22,30 @@ class Calories extends Component {
     })
   }
 
+  handleDelete(id) {
+    requests.deleteCaloriesEntry(id)
+    .then((response) => {
+      const filteredEntries = this.state.caloriesEntries.map((obj) =>
+        ({ day: obj.day, entries: reject(obj.entries, {id: id}) })
+      )
+      this.setState({ caloriesEntries: filteredEntries })
+    })
+  }
+
   newCaloriesEntryPath() {
     browserHistory.push('/calories/new')
   }
 
   render() {
-    const calories = this.state.caloriesEntries.map((record, index) =>
-      <DailyCalories
-        key={index}
-        day={record.day}
-        caloriesEntries={record.entries}/>
-    )
+    const calories = this.state.caloriesEntries.map((record, index) => {
+      if (record.entries.length > 0) {
+        return <DailyCalories
+                  key={index}
+                  day={record.day}
+                  caloriesEntries={record.entries}
+                  onDeleteCaloriesEntry={this.handleDelete}/>
+      }
+    })
     return (
       <div>
         <Button bsClass="btn btn-success pull-right" onClick={this.newCaloriesEntryPath}>

@@ -12,7 +12,7 @@ class DailyCalories extends Component {
         <td>{entry.time}</td>
         <td>{entry.calories_amount}</td>
         <td><Link to={'/calories/edit/' + entry.id}> <Glyphicon glyph="pencil"/> Edit </Link></td>
-        <td><Link to={'/calories/' + entry.id}> <Glyphicon glyph="trash"/> Delete </Link></td>
+        <td><Link onClick={() => this.props.onDeleteCaloriesEntry(entry.id)}> <Glyphicon glyph="trash"/> Delete </Link></td>
       </tr>
     )
     const dailyAmount = this.props.caloriesEntries.reduce((sum, obj) =>
