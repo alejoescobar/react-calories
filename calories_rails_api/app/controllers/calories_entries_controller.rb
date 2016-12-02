@@ -3,7 +3,7 @@ class CaloriesEntriesController < ApplicationController
 
   def index
     render json: current_user.calories_entries.order(date: :desc)
-      .group_by_day
+      .apply_filters(params).group_by_day
   end
 
   def show

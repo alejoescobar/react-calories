@@ -21,6 +21,14 @@ class CaloriesEntry < ApplicationRecord
       .map { |day, entries| { day: day, entries: entries } }
   }
 
+  scope :filter_by_date, -> (start_date, end_date) {
+    where(date: start_date..end_date)
+  }
+
+  scope :filter_by_time, -> (start_time, end_time) {
+    where('date::time BETWEEN ? AND ?', start_time, end_time)
+  }
+
   def day
     self.date.strftime('%a, %-e %b %Y')
   end
@@ -29,10 +37,22 @@ class CaloriesEntry < ApplicationRecord
     self.date.strftime('%-l:%M %p')
   end
 
+  def self.apply_filters(params = {})
+    calories_entries = all
+    calories_entries = calories_entries.filter_by_date(params[:start_date], params[:end_date]) if validate_param(params[:start_date]) && validate_param([:end_date])
+    calories_entries = calories_entries.filter_by_time(params[:start_time], params[:end_time]) if validate_param(params[:start_time]) && validate_param([:end_time])
+    calories_entries
+  end
+
   def as_json(opts)
     opts[:only] ||= [:id, :title, :calories_amount, :user_id]
     opts[:methods] ||= [:day, :time]
     super
   end
 
+  private
+
+  def self.validate_param(param)
+    param && param.present?
+  end
 end
