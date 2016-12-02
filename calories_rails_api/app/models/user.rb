@@ -36,4 +36,9 @@ class User < ApplicationRecord
     self.save
   end
 
+  def as_json(opts)
+    opts[:except] ||= [:password_digest]
+    super
+  end
+
 end

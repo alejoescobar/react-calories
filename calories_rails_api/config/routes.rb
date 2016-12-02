@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+
+  # Admin routes
+  namespace :admin do
+    resources :users
+  end
+
   resources :calories_entries
 
   # Auth routes
