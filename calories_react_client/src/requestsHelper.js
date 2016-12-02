@@ -33,8 +33,8 @@ const requests = {
     })
   },
 
-  getCaloriesEntries: () => {
-    return axios.get('/calories_entries')
+  getCaloriesEntries: (query) => {
+    return axios.get(`/calories_entries?${query}`)
   },
 
   showCaloriesEntry: (entryId) => {

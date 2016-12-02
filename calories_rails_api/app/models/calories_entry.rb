@@ -22,7 +22,7 @@ class CaloriesEntry < ApplicationRecord
   }
 
   scope :filter_by_date, -> (start_date, end_date) {
-    where(date: start_date..end_date)
+    where('date::date BETWEEN ? AND ?', start_date, end_date)
   }
 
   scope :filter_by_time, -> (start_time, end_time) {
