@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Table, ListGroup, ListGroupItem, Glyphicon } from 'react-bootstrap'
 import { Link } from 'react-router'
+import cookie from 'react-cookie'
 
 class DailyCalories extends Component {
   render() {
@@ -18,7 +19,7 @@ class DailyCalories extends Component {
     const dailyAmount = this.props.caloriesEntries.reduce((sum, obj) =>
       sum + obj.calories_amount, 0
     )
-    const dailyCaloriesGoal = sessionStorage.getItem('userCaloriesGoal')
+    const dailyCaloriesGoal = cookie.load('userCaloriesGoal')
     return (
       <ListGroup>
         <li className="list-group-item">
