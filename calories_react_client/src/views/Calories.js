@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, FormControl, InputGroup, Glyphicon, Form } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
-import requests from '../requestsHelper'
+import { userRequests } from '../requestsHelper'
 import DailyCalories from '../components/DailyCalories'
 import { reject } from 'lodash'
 import DateRangePicker from 'react-bootstrap-daterangepicker'
@@ -27,14 +27,14 @@ class Calories extends Component {
   }
 
   componentDidMount() {
-    requests.getCaloriesEntries()
+    userRequests.getCaloriesEntries()
     .then((response) => {
       this.setState({ caloriesEntries: response.data })
     })
   }
 
   handleDelete(id) {
-    requests.deleteCaloriesEntry(id)
+    userRequests.deleteCaloriesEntry(id)
     .then((response) => {
       const filteredEntries = this.state.caloriesEntries.map((obj) =>
         ({ day: obj.day, entries: reject(obj.entries, {id: id}) })
@@ -68,7 +68,7 @@ class Calories extends Component {
     const startTime = `start_time=${this.state.startTime}`
     const endTime = `end_time=${this.state.endTime}`
     const query = `${startDate}&${endDate}&${startTime}&${endTime}`
-    requests.getCaloriesEntries(query)
+    userRequests.getCaloriesEntries(query)
     .then((response) => {
       this.setState({ caloriesEntries: response.data })
     })
@@ -81,7 +81,7 @@ class Calories extends Component {
       startTime: moment().startOf('day').format('HH:mm'),
       endTime: moment().endOf('day').format('HH:mm')
     })
-    requests.getCaloriesEntries()
+    userRequests.getCaloriesEntries()
     .then((response) => {
       this.setState({ caloriesEntries: response.data })
     })

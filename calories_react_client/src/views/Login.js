@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import FieldGroup from '../components/FieldGroup'
-import requests from '../requestsHelper'
+import { userRequests } from '../requestsHelper'
 import AlertDismissable from '../components/AlertDismissable'
 import { Button } from 'react-bootstrap'
 import { Link, browserHistory } from 'react-router'
@@ -32,12 +32,9 @@ class Login extends Component {
     event.preventDefault()
     const userEmail = this.state.email
     const password = this.state.password
-    requests.login(userEmail, password)
+    userRequests.login(userEmail, password)
     .then((response) => {
       const user = response.data
-      // sessionStorage.setItem('userId', user.id)
-      // sessionStorage.setItem('userEmail', user.email)
-      // sessionStorage.setItem('userCaloriesGoal', user.daily_calories_goal)
       cookie.save('userId', user.id)
       cookie.save('userEmail', user.email)
       cookie.save('userCaloriesGoal', user.daily_calories_goal)

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import requests from '../requestsHelper'
+import { userRequests } from '../requestsHelper'
 import { browserHistory } from 'react-router'
 import CaloriesEntryForm from '../components/CaloriesEntryForm'
 
@@ -35,7 +35,7 @@ class NewCaloriesEntry extends Component {
     const title = this.state.title
     const caloriesAmount = this.state.caloriesAmount
     const date = this.state.date
-    requests.createCaloriesEntry(title, caloriesAmount, date)
+    userRequests.createCaloriesEntry(title, caloriesAmount, date)
     .then((response) => {
       browserHistory.push('/calories')
     })

@@ -8,7 +8,7 @@ if (cookie.load('userAuthToken')) {
   axios.defaults.headers.common['Authorization'] = cookie.load('userAuthToken')
 }
 
-const requests = {
+const userRequests = {
   register: (email, password, caloriesGoal) => {
     return axios.post('/registrations', {
       user: {
@@ -65,6 +65,6 @@ const requests = {
   deleteCaloriesEntry: (entryId) => {
     return axios.delete(`/calories_entries/${entryId}`)
   }
-};
+}
 
-export default requests
+export { userRequests }

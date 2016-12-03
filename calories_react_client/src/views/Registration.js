@@ -3,7 +3,7 @@ import FieldGroup from '../components/FieldGroup'
 import { Button } from 'react-bootstrap'
 import { Link, browserHistory } from 'react-router'
 import AlertDismissable from '../components/AlertDismissable'
-import requests from '../requestsHelper'
+import { userRequests } from '../requestsHelper'
 
 class Registration extends Component {
 
@@ -38,7 +38,7 @@ class Registration extends Component {
     const userEmail = this.state.email
     const password = this.state.password
     const caloriesGoal = this.state.caloriesGoal
-    requests.register(userEmail, password, caloriesGoal)
+    userRequests.register(userEmail, password, caloriesGoal)
     .then((response) => {
       browserHistory.push('/login')
     }).catch((error) => {

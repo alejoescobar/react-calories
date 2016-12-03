@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import requests from '../requestsHelper'
+import { userRequests } from '../requestsHelper'
 import { browserHistory } from 'react-router'
 import CaloriesEntryForm from '../components/CaloriesEntryForm'
 
@@ -20,9 +20,8 @@ class EditCaloriesEntry extends Component {
   }
 
   componentDidMount() {
-    requests.showCaloriesEntry(this.props.params.entryId)
+    userRequests.showCaloriesEntry(this.props.params.entryId)
     .then((response) => {
-      console.log(response)
       const caloriesEntry = response.data
       this.setState({
         id: caloriesEntry.id,
@@ -51,7 +50,7 @@ class EditCaloriesEntry extends Component {
     const title = this.state.title
     const caloriesAmount = this.state.caloriesAmount
     const date = this.state.date
-    requests.updateCaloriesEntry(id, title, caloriesAmount, date)
+    userRequests.updateCaloriesEntry(id, title, caloriesAmount, date)
     .then((response) => {
       browserHistory.push('/calories')
     })
