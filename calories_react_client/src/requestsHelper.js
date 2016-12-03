@@ -96,6 +96,10 @@ const adminRequests = {
         daily_calories_goal: dailyCaloriesGoal
       }
     })
+  },
+
+  deleteUser: (id) => {
+    return axios.delete(`/admin/users/${id}`)
   }
 }
 

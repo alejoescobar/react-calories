@@ -10,6 +10,7 @@ class Users extends Component {
     this.state = {
       users: []
     }
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
@@ -19,13 +20,24 @@ class Users extends Component {
     })
   }
 
+  handleDelete(id) {
+    adminRequests.deleteUser(id)
+    .then((response) => {
+      const filteredUsers = this.state.users.filter((user) =>
+        user.id !== id
+      )
+      this.setState({ users: filteredUsers })
+    })
+  }
+
+
   newUserPath() {
     browserHistory.push('/admin/users/new')
   }
 
   render() {
     const users = this.state.users.map((user, index) =>
-      <User key={user.id} user={user} />
+      <User key={user.id} user={user} onDeleteUser={this.handleDelete} />
     )
     return (
       <div>

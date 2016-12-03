@@ -12,7 +12,7 @@ class User extends Component {
         <td>{user.daily_calories_goal}</td>
         <td>{user.created_at}</td>
         <td><Link to={`/admin/users/edit/${user.id}`}> <Glyphicon glyph="pencil"/> Edit </Link></td>
-        {/* <td><Link onClick={() => this.props.onDeleteCaloriesEntry(entry.id)}> <Glyphicon glyph="trash"/> Delete </Link></td> */}
+        <td><Link onClick={() => this.props.onDeleteUser(user.id)}> <Glyphicon glyph="trash"/> Delete </Link></td>
       </tr>
     )
   }
