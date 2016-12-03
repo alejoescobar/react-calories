@@ -29,7 +29,7 @@ class EditUser extends Component {
         id: user.id,
         email: user.email,
         role: user.role,
-        dailyCaloriesGoal: user.daily_calories_goal
+        caloriesGoal: user.daily_calories_goal
       })
     })
   }
@@ -70,7 +70,8 @@ class EditUser extends Component {
       <UserForm
         email={this.state.email}
         password={this.state.password}
-        dailyCaloriesGoal={this.state.caloriesGoal}
+        role={this.state.role}
+        caloriesGoal={this.state.caloriesGoal}
         onSubmitUser={this.handleSubmit}
         onUpdateEmail={this.updateEmail}
         onUpdatePassword={this.updatePassword}

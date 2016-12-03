@@ -55,7 +55,7 @@ class NewUser extends Component {
       <UserForm
         email={this.state.email}
         password={this.state.password}
-        dailyCaloriesGoal={this.state.caloriesGoal}
+        caloriesGoal={this.state.caloriesGoal}
         onSubmitUser={this.handleSubmit}
         onUpdateEmail={this.updateEmail}
         onUpdatePassword={this.updatePassword}

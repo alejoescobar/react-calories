@@ -30,13 +30,13 @@ class UserForm extends Component {
             type="password"
             label="Password:"
             placeholder="Enter your password"
-            required="true"
             value={this.props.password}
             onChange={this.props.onUpdatePassword}
           />
           <FormGroup controlId="formControlsSelect">
             <ControlLabel>Role:</ControlLabel>
-            <FormControl componentClass="select" onChange={this.props.onUpdateRole}>
+            <FormControl componentClass="select" value={this.props.role}
+              onChange={this.props.onUpdateRole}>
               <option value="user">User</option>
               <option value="manager">Manager</option>
               <option value="admin">Admin</option>
