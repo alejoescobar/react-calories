@@ -72,8 +72,23 @@ const adminRequests = {
     return axios.get('/admin/users')
   },
 
+  showUser: (id) => {
+    return axios.get(`/admin/users/${id}`)
+  },
+
   createUser: (email, password, role, dailyCaloriesGoal) => {
     return axios.post('/admin/users', {
+      user: {
+        email: email,
+        password: password,
+        role: role,
+        daily_calories_goal: dailyCaloriesGoal
+      }
+    })
+  },
+
+  updateUser: (id, email, password, role, dailyCaloriesGoal) => {
+    return axios.put(`/admin/users/${id}`, {
       user: {
         email: email,
         password: password,
