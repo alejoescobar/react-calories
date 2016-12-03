@@ -70,6 +70,16 @@ const userRequests = {
 const adminRequests = {
   getUsers: () => {
     return axios.get('/admin/users')
+  },
+
+  createUser: (email, password, dailyCaloriesGoal) => {
+    return axios.post('/admin/users', {
+      user: {
+        email: email,
+        password: password,
+        daily_calories_goal: dailyCaloriesGoal
+      }
+    })
   }
 }
 
