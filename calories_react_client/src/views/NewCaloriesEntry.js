@@ -45,16 +45,20 @@ class NewCaloriesEntry extends Component {
   }
 
   render() {
+    const userId = this.props.params.userId
     return (
-      <CaloriesEntryForm
-        onSubmitForm={this.handleSubmit}
-        onUpdateTitle={this.updateTitle}
-        onUpdateCaloriesAmount={this.updateCaloriesAmount}
-        onUpdateDate={this.updateDate}
-        title={this.state.title}
-        caloriesAmount={this.state.caloriesAmount}
-        date={this.state.date}
-        errors={this.state.errors}/>
+      <div className="col-sm-8 col-sm-offset-2">
+        <Link to="/calories">Back</Link>
+        <CaloriesEntryForm
+          onSubmitForm={this.handleSubmit}
+          onUpdateTitle={this.updateTitle}
+          onUpdateCaloriesAmount={this.updateCaloriesAmount}
+          onUpdateDate={this.updateDate}
+          title={this.state.title}
+          caloriesAmount={this.state.caloriesAmount}
+          date={this.state.date}
+          errors={this.state.errors}/>
+      </div>
     )
   }
 }
