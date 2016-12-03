@@ -67,4 +67,10 @@ const userRequests = {
   }
 }
 
-export { userRequests }
+const adminRequests = {
+  getUsers: () => {
+    return axios.get('/admin/users')
+  }
+}
+
+export { userRequests, adminRequests }
