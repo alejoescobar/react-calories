@@ -47,6 +47,10 @@ class Calories extends Component {
     browserHistory.push('/calories/new')
   }
 
+  editCaloriesEntryPath(id) {
+    browserHistory.push(`/calories/${id}/edit`)
+  }
+
   updateDateRanges(e, picker) {
     this.setState({
       startDate: picker.startDate.format('L'),
@@ -94,6 +98,7 @@ class Calories extends Component {
                   key={index}
                   day={record.day}
                   caloriesEntries={record.entries}
+                  onEditCaloriesEntry={this.editCaloriesEntryPath}
                   onDeleteCaloriesEntry={this.handleDelete}/>
       }
     })

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { userRequests } from '../requestsHelper'
-import { browserHistory } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 import CaloriesEntryForm from '../components/CaloriesEntryForm'
 
 class EditCaloriesEntry extends Component {

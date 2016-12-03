@@ -25,7 +25,7 @@ ReactDOM.render(
     <Route component={UserNav}>
       <Route path="/calories" component={Calories} />
       <Route path="/calories/new" component={NewCaloriesEntry} />
-      <Route path="/calories/edit/:entryId" component={EditCaloriesEntry} />
+      <Route path="/calories/:entryId/edit" component={EditCaloriesEntry} />
       <Route path="/admin/users" component={Users} />
       <Route path="/admin/users/new" component={NewUser} />
       <Route path="/admin/users/edit/:userId" component={EditUser} />

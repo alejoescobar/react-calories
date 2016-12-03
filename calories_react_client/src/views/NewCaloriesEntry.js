@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { userRequests } from '../requestsHelper'
-import { browserHistory } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 import CaloriesEntryForm from '../components/CaloriesEntryForm'
 
 class NewCaloriesEntry extends Component {
@@ -45,7 +45,6 @@ class NewCaloriesEntry extends Component {
   }
 
   render() {
-    const userId = this.props.params.userId
     return (
       <div className="col-sm-8 col-sm-offset-2">
         <Link to="/calories">Back</Link>
