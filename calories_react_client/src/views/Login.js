@@ -35,9 +35,9 @@ class Login extends Component {
     userRequests.login(userEmail, password)
     .then((response) => {
       const user = response.data
-      cookie.save('userId', user.id)
-      cookie.save('userEmail', user.email)
-      cookie.save('userCaloriesGoal', user.daily_calories_goal)
+      cookie.save('userId', user.id, { path: '/' })
+      cookie.save('userEmail', user.email, { path: '/' })
+      cookie.save('userCaloriesGoal', user.daily_calories_goal, { path: '/' })
       browserHistory.push('/calories')
     })
     .catch((error) => {

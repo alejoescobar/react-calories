@@ -27,7 +27,7 @@ const userRequests = {
       }
     }).then((response) => {
       const user = response.data
-      cookie.save('userAuthToken', user.auth_token)
+      cookie.save('userAuthToken', user.auth_token, { path: '/' })
       axios.defaults.headers.common['Authorization'] = user.auth_token
       return response
     })
