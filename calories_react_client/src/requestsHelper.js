@@ -104,6 +104,16 @@ const adminRequests = {
 
   getUserCaloriesEntries: (id) => {
     return axios.get(`admin/users/${id}/calories_entries`)
+  },
+
+  createUserCaloriesEntry: (id, title, caloriesAmount, date) => {
+    return axios.post(`/admin/users/${id}/calories_entries`, {
+      calories_entry: {
+        title: title,
+        calories_amount: caloriesAmount,
+        date: date
+      }
+    })
   }
 }
 

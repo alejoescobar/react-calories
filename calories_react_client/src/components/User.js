@@ -13,7 +13,7 @@ class User extends Component {
         <td>{user.daily_calories_goal}</td>
         <td>{moment(user.created_at).format('LLL')}</td>
         <td>
-          <Link to={`/admin/users/${user.id}/calories_entries`}>
+          <Link to={`/admin/users/${user.id}/calories`}>
           <Glyphicon glyph="eye-open"/> Show </Link>
         </td>
         <td>
