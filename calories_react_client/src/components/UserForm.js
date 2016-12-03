@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import FieldGroup from './FieldGroup'
-import { Button } from 'react-bootstrap'
+import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap'
 import { Link } from 'react-router'
 import AlertDismissable from './AlertDismissable'
 
@@ -34,6 +34,14 @@ class UserForm extends Component {
             value={this.props.password}
             onChange={this.props.onUpdatePassword}
           />
+          <FormGroup controlId="formControlsSelect">
+            <ControlLabel>Role:</ControlLabel>
+            <FormControl componentClass="select" onChange={this.props.onUpdateRole}>
+              <option value="user">User</option>
+              <option value="manager">Manager</option>
+              <option value="admin">Admin</option>
+            </FormControl>
+          </FormGroup>
           <FieldGroup
             id="calories-goal"
             type="number"
