@@ -13,6 +13,10 @@ class ApplicationController < ActionController::API
     current_user.present?
   end
 
+  def require_admin_permissions!
+    head :unauthorized unless current_user.admin?
+  end
+
   def require_admin_or_manager_permissions!
     head :unauthorized unless current_user.admin? || current_user.manager?
   end

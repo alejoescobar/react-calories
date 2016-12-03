@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   # Admin routes
   namespace :admin do
-    resources :users
+    resources :users do
+      resources :calories_entries
+    end
   end
 
   resources :calories_entries
