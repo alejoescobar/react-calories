@@ -100,6 +100,10 @@ const adminRequests = {
 
   deleteUser: (id) => {
     return axios.delete(`/admin/users/${id}`)
+  },
+
+  getUserCaloriesEntries: (id) => {
+    return axios.get(`admin/users/${id}/calories_entries`)
   }
 }
 

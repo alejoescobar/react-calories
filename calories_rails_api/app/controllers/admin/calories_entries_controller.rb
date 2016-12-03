@@ -4,7 +4,7 @@ class Admin::CaloriesEntriesController < ApplicationController
 
   def index
     user = User.find(params[:user_id])
-    render json: current_user.calories_entries.order(date: :desc)
+    render json: user.calories_entries.order(date: :desc)
       .apply_filters(params).group_by_day
   end
 

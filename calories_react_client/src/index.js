@@ -10,6 +10,7 @@ import EditCaloriesEntry from './views/EditCaloriesEntry'
 import Users from './views/Users'
 import NewUser from './views/NewUser'
 import EditUser from './views/EditUser'
+import AdminCalories from './views/AdminCalories'
 import { Router, Route, browserHistory } from 'react-router'
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -27,6 +28,7 @@ ReactDOM.render(
       <Route path="/admin/users" component={Users} />
       <Route path="/admin/users/new" component={NewUser} />
       <Route path="/admin/users/edit/:userId" component={EditUser} />
+      <Route path="/admin/users/:userId/calories_entries" component={AdminCalories} />
     </Route>
   </Router>,
   document.getElementById('root')
