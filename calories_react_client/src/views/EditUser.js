@@ -68,6 +68,7 @@ class EditUser extends Component {
   render() {
     return(
       <UserForm
+        header={{title: 'Edit', button: 'Update'}}
         email={this.state.email}
         password={this.state.password}
         role={this.state.role}

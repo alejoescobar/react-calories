@@ -53,6 +53,7 @@ class NewUser extends Component {
   render() {
     return(
       <UserForm
+        header={{title: 'New', button: 'Create'}}
         email={this.state.email}
         password={this.state.password}
         caloriesGoal={this.state.caloriesGoal}

@@ -12,7 +12,7 @@ class UserForm extends Component {
     return(
       <div className="col-sm-8 col-sm-offset-2">
         <Link to="/admin/users">Back</Link>
-        <h1>New User</h1>
+        <h1>{this.props.header.title} User</h1>
         <hr/>
         {alerts}
         <form onSubmit={this.props.onSubmitUser}>
@@ -52,7 +52,7 @@ class UserForm extends Component {
             onChange={this.props.onUpdateCaloriesGoal}
           />
           <Button bsStyle="success" type="submit">
-            Create user
+            {this.props.header.button} user
           </Button>
         </form>
       </div>
