@@ -103,10 +103,15 @@ class Calories extends Component {
     })
     return (
       <div>
-        <EntriesFilter startDate={this.state.startDate} endDate={this.state.endDate}
-          startTime={this.state.startTime} endTime={this.state.endTime}
-          onUpdateDateRanges={this.updateDateRanges} onUpdateStartTime={this.updateStartTime}
-          onUpdateEndTime={this.updateEndTime} onFilter={this.filterCaloriesEntries}
+        <EntriesFilter
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+          startTime={this.state.startTime}
+          endTime={this.state.endTime}
+          onUpdateDateRanges={this.updateDateRanges}
+          onUpdateStartTime={this.updateStartTime}
+          onUpdateEndTime={this.updateEndTime}
+          onFilter={this.filterCaloriesEntries}
           onReset={this.resetCaloriesEntries}/>
         <Button bsClass="btn btn-success pull-right" onClick={this.newCaloriesEntryPath}>
           Create new entry

@@ -102,8 +102,8 @@ const adminRequests = {
     return axios.delete(`/admin/users/${id}`)
   },
 
-  getUserCaloriesEntries: (id) => {
-    return axios.get(`admin/users/${id}/calories_entries`)
+  getUserCaloriesEntries: (id, query='') => {
+    return axios.get(`admin/users/${id}/calories_entries?${query}`)
   },
 
   showUserCaloriesEntry: (userId, id) => {
