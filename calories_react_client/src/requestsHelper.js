@@ -33,6 +33,10 @@ const userRequests = {
     })
   },
 
+  logout: () => {
+    return axios.delete('/sessions')
+  },
+
   getCaloriesEntries: (query) => {
     return axios.get(`/calories_entries?${query}`)
   },

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 import { Link, browserHistory } from 'react-router'
+import { userRequests } from '../requestsHelper'
 import cookie from 'react-cookie'
 
 class UserNav extends Component {
@@ -17,12 +18,16 @@ class UserNav extends Component {
     this.setState({userEmail: cookie.load('userEmail')})
   }
 
-  handleLogout() {
-    cookie.remove('userId')
-    cookie.remove('userEmail')
-    cookie.remove('userAuthToken')
-    cookie.remove('userCaloriesGoal')
-    browserHistory.push('/login')
+  handleLogout(e) {
+    e.preventDefault()
+    userRequests.logout()
+    .then((response) => {
+      cookie.remove('userId')
+      cookie.remove('userEmail')
+      cookie.remove('userAuthToken')
+      cookie.remove('userCaloriesGoal')
+      browserHistory.push('/login')
+    })
   }
 
   render() {
