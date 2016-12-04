@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import { Button, FormControl, InputGroup, Glyphicon, Form } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import { browserHistory } from 'react-router'
 import { userRequests } from '../requestsHelper'
 import DailyCalories from '../components/DailyCalories'
+import EntriesFilter from '../components/EntriesFilter'
 import { reject } from 'lodash'
-import DateRangePicker from 'react-bootstrap-daterangepicker'
 import moment from 'moment'
-import '../dateRangePicker.css';
 
 class Calories extends Component {
   constructor(props) {
@@ -102,35 +101,13 @@ class Calories extends Component {
                   onDeleteCaloriesEntry={this.handleDelete}/>
       }
     })
-    const startDate = this.state.startDate
-    const endDate = this.state.endDate
-    const dateRange = `${startDate} - ${endDate}`
     return (
       <div>
-        <div className="row">
-          <div className="col-md-3">
-            <DateRangePicker startDate={startDate} endDate={endDate} onApply={this.updateDateRanges}>
-              <InputGroup>
-                <FormControl value={dateRange} />
-                <InputGroup.Addon>
-                  <Glyphicon glyph="calendar" />
-                </InputGroup.Addon>
-              </InputGroup>
-            </DateRangePicker>
-          </div>
-          <div className="col-md-3">
-            <Form inline>
-              <FormControl type="time" value={this.state.startTime} onChange={this.updateStartTime} />
-              <FormControl type="time" value={this.state.endTime} onChange={this.updateEndTime} />
-            </Form>
-          </div>
-          <Button bsClass="btn btn-default" onClick={this.filterCaloriesEntries}>
-            Filter <Glyphicon glyph="search" />
-          </Button>
-          <Button bsClass="btn btn-default" onClick={this.resetCaloriesEntries}>
-            Reset <Glyphicon glyph="repeat" />
-          </Button>
-        </div>
+        <EntriesFilter startDate={this.state.startDate} endDate={this.state.endDate}
+          startTime={this.state.startTime} endTime={this.state.endTime}
+          onUpdateDateRanges={this.updateDateRanges} onUpdateStartTime={this.updateStartTime}
+          onUpdateEndTime={this.updateEndTime} onFilter={this.filterCaloriesEntries}
+          onReset={this.resetCaloriesEntries}/>
         <Button bsClass="btn btn-success pull-right" onClick={this.newCaloriesEntryPath}>
           Create new entry
         </Button>
