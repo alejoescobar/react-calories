@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
 import { Link, browserHistory } from 'react-router'
 import { userRequests } from '../requestsHelper'
+import { LinkContainer } from 'react-router-bootstrap'
 import cookie from 'react-cookie'
 
 class UserNav extends Component {
@@ -11,6 +12,7 @@ class UserNav extends Component {
     this.state = {
       userEmail: ''
     }
+    console.log(cookie.load('userRole') === 'admin')
     this.handleLogout = this.handleLogout.bind(this)
   }
 
@@ -25,12 +27,23 @@ class UserNav extends Component {
       cookie.remove('userId')
       cookie.remove('userEmail')
       cookie.remove('userAuthToken')
+      cookie.remove('userRole')
       cookie.remove('userCaloriesGoal')
       browserHistory.push('/login')
     })
   }
 
   render() {
+    const userRole = cookie.load('userRole')
+    const adminLink = () => {
+      if (userRole === 'admin') {
+        return(
+          <LinkContainer to={{ pathname: '/admin/users'}}>
+            <NavItem eventKey={4}>Admin Users</NavItem>
+          </LinkContainer>
+        )
+      }
+    }
     return (
       <div>
         <Navbar collapseOnSelect>
@@ -42,7 +55,10 @@ class UserNav extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <NavItem eventKey={1} to="/calories">Calories</NavItem>
+              <LinkContainer to={{ pathname: '/calories'}}>
+                <NavItem eventKey={1}>My Calories</NavItem>
+              </LinkContainer>
+              {adminLink()}
               <NavDropdown eventKey={3} title={this.state.userEmail} id="basic-nav-dropdown">
                 <MenuItem eventKey={3.1}>My Settings</MenuItem>
               </NavDropdown>

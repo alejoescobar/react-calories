@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap'
 import { Link, browserHistory } from 'react-router'
 import AlertDismissable from '../components/AlertDismissable'
 import { userRequests } from '../requestsHelper'
+import cookie from 'react-cookie'
 
 class Registration extends Component {
 
@@ -19,6 +20,12 @@ class Registration extends Component {
     this.updateEmail = this.updateEmail.bind(this)
     this.updatePassword = this.updatePassword.bind(this)
     this.updateCaloriesGoal = this.updateCaloriesGoal.bind(this)
+  }
+
+  componentWillMount() {
+    if (cookie.load('userAuthToken')) {
+      browserHistory.push('/calories')
+    }
   }
 
   updateEmail(e) {

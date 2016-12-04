@@ -37,6 +37,7 @@ class Login extends Component {
       const user = response.data
       cookie.save('userId', user.id, { path: '/' })
       cookie.save('userEmail', user.email, { path: '/' })
+      cookie.save('userRole', user.role, { path: '/' })
       cookie.save('userCaloriesGoal', user.daily_calories_goal, { path: '/' })
       browserHistory.push('/calories')
     })
@@ -76,7 +77,7 @@ class Login extends Component {
             Login
           </Button>
         </form>
-        Don't have an account? <Link to="/Registration">Register</Link>
+        Don't have an account? <Link to="/">Register</Link>
     </div>
     )
   }
