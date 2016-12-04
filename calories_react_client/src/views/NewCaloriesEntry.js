@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { userRequests } from '../requestsHelper'
 import { browserHistory, Link } from 'react-router'
 import CaloriesEntryForm from '../components/CaloriesEntryForm'
+import moment from 'moment'
 
 class NewCaloriesEntry extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class NewCaloriesEntry extends Component {
     this.state = {
       title: '',
       caloriesAmount: 0,
-      date: new Date().toISOString().slice(0,16),
+      date: moment().format('YYYY-MM-DDTkk:mm'),
       errors: []
     }
     this.updateTitle = this.updateTitle.bind(this)

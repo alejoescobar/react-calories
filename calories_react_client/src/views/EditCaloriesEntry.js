@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { userRequests } from '../requestsHelper'
 import { browserHistory, Link } from 'react-router'
 import CaloriesEntryForm from '../components/CaloriesEntryForm'
+import moment from 'moment'
 
 class EditCaloriesEntry extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class EditCaloriesEntry extends Component {
         id: caloriesEntry.id,
         title: caloriesEntry.title,
         caloriesAmount: caloriesEntry.calories_amount,
-        date: new Date(`${caloriesEntry.day} ${caloriesEntry.time}`).toISOString().slice(0,16)
+        date: moment(`${caloriesEntry.day} ${caloriesEntry.time}`).format('YYYY-MM-DDTkk:mm')
       })
     })
   }
