@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap'
 import DailyCalories from '../components/DailyCalories'
 import { adminRequests } from '../requestsHelper'
 import { browserHistory } from 'react-router'
+import { reject } from 'lodash'
 
 class AdminCalories extends Component {
   constructor(props) {
@@ -23,13 +24,14 @@ class AdminCalories extends Component {
   }
 
   handleDelete(id) {
-    // userRequests.deleteCaloriesEntry(id)
-    // .then((response) => {
-    //   const filteredEntries = this.state.caloriesEntries.map((obj) =>
-    //     ({ day: obj.day, entries: reject(obj.entries, {id: id}) })
-    //   )
-    //   this.setState({ caloriesEntries: filteredEntries })
-    // })
+    const userId = this.props.params.userId
+    adminRequests.deleteUserCaloriesEntry(userId, id)
+    .then((response) => {
+      const filteredEntries = this.state.caloriesEntries.map((obj) =>
+        ({ day: obj.day, entries: reject(obj.entries, {id: id}) })
+      )
+      this.setState({ caloriesEntries: filteredEntries })
+    })
   }
 
   newCaloriesEntryPath() {

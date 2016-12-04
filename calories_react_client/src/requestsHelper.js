@@ -128,6 +128,10 @@ const adminRequests = {
         date: date
       }
     })
+  },
+
+  deleteUserCaloriesEntry: (userId, id) => {
+    return axios.delete(`/admin/users/${userId}/calories_entries/${id}`)
   }
 }
 
