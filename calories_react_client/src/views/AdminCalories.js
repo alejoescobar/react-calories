@@ -12,6 +12,7 @@ class AdminCalories extends Component {
     }
     this.handleDelete = this.handleDelete.bind(this)
     this.newCaloriesEntryPath = this.newCaloriesEntryPath.bind(this)
+    this.editCaloriesEntryPath = this.editCaloriesEntryPath.bind(this)
   }
 
   componentDidMount() {
@@ -36,6 +37,11 @@ class AdminCalories extends Component {
     browserHistory.push(`/admin/users/${userId}/calories/new`)
   }
 
+  editCaloriesEntryPath(id) {
+    const userId = this.props.params.userId
+    browserHistory.push(`/admin/users/${userId}/calories/${id}/edit`)
+  }
+
   updateDateRanges(e, picker) {
     this.setState({
       startDate: picker.startDate.format('L'),
@@ -50,6 +56,7 @@ class AdminCalories extends Component {
                   key={index}
                   day={record.day}
                   caloriesEntries={record.entries}
+                  onEditCaloriesEntry={this.editCaloriesEntryPath}
                   onDeleteCaloriesEntry={this.handleDelete}/>
       }
     })

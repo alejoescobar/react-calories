@@ -106,8 +106,22 @@ const adminRequests = {
     return axios.get(`admin/users/${id}/calories_entries`)
   },
 
+  showUserCaloriesEntry: (userId, id) => {
+    return axios.get(`admin/users/${userId}/calories_entries/${id}`)
+  },
+
   createUserCaloriesEntry: (id, title, caloriesAmount, date) => {
     return axios.post(`/admin/users/${id}/calories_entries`, {
+      calories_entry: {
+        title: title,
+        calories_amount: caloriesAmount,
+        date: date
+      }
+    })
+  },
+
+  updateUserCaloriesEntry: (userId, id, title, caloriesAmount, date) => {
+    return axios.put(`/admin/users/${userId}/calories_entries/${id}`, {
       calories_entry: {
         title: title,
         calories_amount: caloriesAmount,

@@ -12,6 +12,7 @@ import NewUser from './views/NewUser'
 import EditUser from './views/EditUser'
 import AdminCalories from './views/AdminCalories'
 import NewAdminCaloriesEntry from './views/AdminNewCaloriesEntry'
+import EditAdminCaloriesEntry from './views/AdminEditCaloriesEntry'
 import { Router, Route, browserHistory } from 'react-router'
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -31,6 +32,7 @@ ReactDOM.render(
       <Route path="/admin/users/edit/:userId" component={EditUser} />
       <Route path="/admin/users/:userId/calories" component={AdminCalories} />
       <Route path="/admin/users/:userId/calories/new" component={NewAdminCaloriesEntry} />
+      <Route path="/admin/users/:userId/calories/:id/edit" component={EditAdminCaloriesEntry} />
     </Route>
   </Router>,
   document.getElementById('root')

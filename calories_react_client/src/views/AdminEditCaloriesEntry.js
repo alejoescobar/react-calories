@@ -2,21 +2,36 @@ import React, { Component } from 'react'
 import { adminRequests } from '../requestsHelper'
 import { browserHistory, Link } from 'react-router'
 import CaloriesEntryForm from '../components/CaloriesEntryForm'
-import moment from 'moment'
 
-class AdminNewCaloriesEntry extends Component {
+class AdminEditCaloriesEntry extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      id: 0,
       title: '',
       caloriesAmount: 0,
-      date: moment().format('YYYY-MM-DDTkk:mm'),
+      date: '',
       errors: []
     }
     this.updateTitle = this.updateTitle.bind(this)
     this.updateCaloriesAmount = this.updateCaloriesAmount.bind(this)
     this.updateDate = this.updateDate.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentDidMount() {
+    const userId = this.props.params.userId
+    const id = this.props.params.id
+    adminRequests.showUserCaloriesEntry(userId, id)
+    .then((response) => {
+      const caloriesEntry = response.data
+      this.setState({
+        id: caloriesEntry.id,
+        title: caloriesEntry.title,
+        caloriesAmount: caloriesEntry.calories_amount,
+        date: new Date(`${caloriesEntry.day} ${caloriesEntry.time}`).toISOString().slice(0,16)
+      })
+    })
   }
 
   updateTitle(e) {
@@ -33,13 +48,14 @@ class AdminNewCaloriesEntry extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    const id = this.props.params.userId
+    const userId = this.props.params.userId
+    const id = this.props.params.id
     const title = this.state.title
     const caloriesAmount = this.state.caloriesAmount
     const date = this.state.date
-    adminRequests.createUserCaloriesEntry(id, title, caloriesAmount, date)
+    adminRequests.updateUserCaloriesEntry(userId, id, title, caloriesAmount, date)
     .then((response) => {
-      browserHistory.push(`/admin/users/${id}/calories`)
+      browserHistory.push(`/admin/users/${userId}/calories`)
     })
     .catch((error) => {
       this.setState({ errors: error.response.data.errors })
@@ -65,4 +81,4 @@ class AdminNewCaloriesEntry extends Component {
   }
 }
 
-export default AdminNewCaloriesEntry
+export default AdminEditCaloriesEntry
