@@ -52,6 +52,7 @@ class AdminNewCaloriesEntry extends Component {
       <div className="col-sm-8 col-sm-offset-2">
         <Link to={`/admin/users/${userId}/calories`}>Back</Link>
         <CaloriesEntryForm
+          header={{title: 'New', button: 'Create'}}
           onSubmitForm={this.handleSubmit}
           onUpdateTitle={this.updateTitle}
           onUpdateCaloriesAmount={this.updateCaloriesAmount}

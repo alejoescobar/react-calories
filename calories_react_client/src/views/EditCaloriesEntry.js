@@ -65,6 +65,7 @@ class EditCaloriesEntry extends Component {
       <div className="col-sm-8 col-sm-offset-2">
         <Link to="/calories">Back</Link>
         <CaloriesEntryForm
+          header={{title: 'Edit', button: 'Update'}}
           onSubmitForm={this.handleSubmit}
           onUpdateTitle={this.updateTitle}
           onUpdateCaloriesAmount={this.updateCaloriesAmount}

@@ -124,6 +124,7 @@ class AdminCalories extends Component {
           Create new entry
         </Button>
         <h1>Listing Calories</h1>
+        <p>{this.props.location.query.userEmail}</p>
         <hr/>
         {calories}
       </div>

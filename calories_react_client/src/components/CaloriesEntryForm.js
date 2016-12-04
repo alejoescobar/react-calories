@@ -6,12 +6,13 @@ import { Link } from 'react-router'
 
 class CaloriesEntryForm extends Component {
   render() {
+    console.log(this.props)
     const alerts = this.props.errors.map((message, index) =>
       <AlertDismissable key={index} message={message}/>
     )
     return (
       <div>
-        <h1>New Calories Entry</h1>
+        <h1>{this.props.header.title} Calories Entry</h1>
         <hr/>
         {alerts}
         <form onSubmit={this.props.onSubmitForm}>
@@ -40,7 +41,7 @@ class CaloriesEntryForm extends Component {
             value={this.props.date}
             onChange={this.props.onUpdateDate}/>
           <Button bsStyle="success" type="submit">
-            Create new entry
+            {this.props.header.button} new entry
           </Button>
         </form>
       </div>

@@ -13,7 +13,7 @@ class User extends Component {
         <td>{user.daily_calories_goal}</td>
         <td>{moment(user.created_at).format('LLL')}</td>
         <td>
-          <Link to={`/admin/users/${user.id}/calories`}>
+          <Link to={{ pathname: `/admin/users/${user.id}/calories`, query: { userEmail: user.email }}}>
           <Glyphicon glyph="eye-open"/> Show </Link>
         </td>
         <td>
@@ -21,8 +21,9 @@ class User extends Component {
           <Glyphicon glyph="pencil"/> Edit </Link>
         </td>
         <td>
-          <Link onClick={() => this.props.onDeleteUser(user.id)}>
-          <Glyphicon glyph="trash"/> Delete </Link>
+          <a href="#" onClick={() => this.props.onDeleteUser(user.id)} >
+            <Glyphicon glyph="trash"/> Delete
+          </a>
         </td>
       </tr>
     )
