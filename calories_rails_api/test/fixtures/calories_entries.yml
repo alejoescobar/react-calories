@@ -14,13 +14,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  date: 2016-11-28 01:27:08
-  title: MyText
-  num_of_calories: 1
-  user: one
+  date: 2016-11-30 01:27:08
+  title: Hamburguer
+  calories_amount: 500
+  user: user
 
 two:
   date: 2016-11-28 01:27:08
-  title: MyText
-  num_of_calories: 1
-  user: two
+  title: Sandwich
+  calories_amount: 450
+  user: user
