@@ -6,7 +6,6 @@ import { Link } from 'react-router'
 
 class CaloriesEntryForm extends Component {
   render() {
-    console.log(this.props)
     const alerts = this.props.errors.map((message, index) =>
       <AlertDismissable key={index} message={message}/>
     )
@@ -33,7 +32,7 @@ class CaloriesEntryForm extends Component {
             value={this.props.caloriesAmount}
             onChange={this.props.onUpdateCaloriesAmount}/>
           <FieldGroup
-            id="caloriesAmount"
+            id="date"
             type="datetime-local"
             label="Date (mm/dd/yyyy):"
             placeholder="Enter the amount of calories the new entry"

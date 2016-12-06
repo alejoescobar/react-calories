@@ -13,12 +13,12 @@ class DailyCalories extends Component {
         <td>{entry.time}</td>
         <td>{entry.calories_amount}</td>
         <td>
-          <Link onClick={() => this.props.onEditCaloriesEntry(entry.id)}> 
+          <Link onClick={() => this.props.onEditCaloriesEntry(entry.id)}>
           <Glyphicon glyph="pencil"/> Edit </Link>
         </td>
         <td>
-          <Link onClick={() => this.props.onDeleteCaloriesEntry(entry.id)}>
-          <Glyphicon glyph="trash"/> Delete </Link>
+          <Link id={"entry-" + entry.id} onClick={() => this.props.onDeleteCaloriesEntry(entry.id)}>
+          <Glyphicon glyph="trash" /> Delete </Link>
         </td>
       </tr>
     )
