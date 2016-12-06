@@ -22,8 +22,6 @@ gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'shoulda', '~> 3.5'
-  gem 'shoulda-matchers', '~> 2.0'
   gem 'byebug', platform: :mri
   gem 'annotate'
 end
@@ -33,6 +31,14 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'shoulda', '~> 3.5'
+  gem 'shoulda-matchers', '~> 2.0'
+  gem 'capybara_minitest_spec'
+  gem 'selenium-webdriver'
+  gem 'wait', :git => 'git@github.com:foursquare/wait.git'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

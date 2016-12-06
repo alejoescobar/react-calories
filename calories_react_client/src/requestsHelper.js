@@ -3,8 +3,10 @@ import cookie from 'react-cookie'
 
 if (process.env.NODE_ENV === 'production') {
   axios.defaults.baseURL = 'https://top-calories-api.herokuapp.com/'
+} else if (process.env.REACT_APP_TEST) {
+  axios.defaults.baseURL = 'http://localhost:5000'
 } else {
-  axios.defaults.baseURL = 'http://localhost:3000'
+  axios.defaults.baseURL = 'http://localhost:3001'
 }
 
 if (cookie.load('userAuthToken')) {

@@ -16,21 +16,21 @@
 
 admin:
   email: test@test.com
-  password_digest: '12345678'
+  password_digest: <%= BCrypt::Password.create('12345678', cost: 5) %>
   auth_token: kJeCSZ12SDXj7ctooYjGEpM7
   role: 2
   daily_calories_goal: 1
 
 manager:
   email: test1@test.com
-  password_digest: '12345678'
+  password_digest: <%= BCrypt::Password.create('12345678', cost: 5) %>
   auth_token: 1wFJs7QbhN7xWRTMX5UKPdcg
   role: 1
   daily_calories_goal: 1
 
 user:
   email: test2@test.com
-  password_digest: '12345678'
+  password_digest: <%= BCrypt::Password.create('12345678', cost: 5) %>
   auth_token: bLpvxjuMcmeoxhpEwfvktxyf
   role: 0
   daily_calories_goal: 1
