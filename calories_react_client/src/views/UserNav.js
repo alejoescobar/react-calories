@@ -35,7 +35,7 @@ class UserNav extends Component {
   render() {
     const userRole = cookie.load('userRole')
     const adminLink = () => {
-      if (userRole === 'admin') {
+      if (userRole === 'admin' || userRole === 'manager') {
         return(
           <LinkContainer to={{ pathname: '/admin/users'}}>
             <NavItem eventKey={4}>Admin Users</NavItem>
