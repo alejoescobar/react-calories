@@ -24,6 +24,7 @@ class AdminCaloriesEntriesTest < ActionDispatch::IntegrationTest
     user = users(:user)
     visit "admin/users/#{user.id}/calories"
     assert page.has_content? 'Listing Calories'
+
     click_button 'Create new entry'
 
     fill_in 'Title', with: 'Test Meal'
