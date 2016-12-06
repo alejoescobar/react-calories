@@ -12,6 +12,8 @@ class LoginTest < ActionDispatch::IntegrationTest
 
   test "user can't login with invalid credentials", js: true do
     visit '/login'
+    wait = Wait.new
+    wait.until { assert page.has_content? 'Login' }
     users(:user).update(password: '12345678')
 
     fill_in 'Email', with: 'notvalid@email.com'

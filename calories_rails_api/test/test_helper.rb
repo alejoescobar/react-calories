@@ -51,14 +51,15 @@ class ActiveSupport::TestCase
 
     def login(user)
       visit '/login'
-
+      wait = Wait.new
+      wait.until { assert page.has_content? 'Login' }
       within 'form' do
         fill_in 'Email', with: user.email
         fill_in 'Password', with: '12345678'
         click_button 'Login'
       end
 
-      Wait.new.until { assert_equal current_path, '/login' }
+      wait.until { assert page.has_content? 'Listing Calories' }
     end
 
   end

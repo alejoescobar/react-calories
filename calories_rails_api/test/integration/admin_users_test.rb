@@ -36,9 +36,9 @@ class UsersTest < ActionDispatch::IntegrationTest
     admin = users(:admin)
     login(admin)
 
-    sleep(1)
     user_id = users(:user).id
     visit "/admin/users/edit/#{user_id}"
+    assert page.has_content? 'Edit User'
 
     fill_in 'Email', with: 'updated@email.com'
     fill_in 'Calories goal', with: '756'
@@ -48,7 +48,7 @@ class UsersTest < ActionDispatch::IntegrationTest
     assert page.has_content? '756'
   end
 
-  test 'user can destroy calories entry', js: true do
+  test 'admin can destroy users', js: true do
     admin = users(:admin)
     login(admin)
 
