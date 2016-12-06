@@ -21,7 +21,7 @@ class User extends Component {
           <Glyphicon glyph="pencil"/> Edit </Link>
         </td>
         <td>
-          <a href="#" onClick={() => this.props.onDeleteUser(user.id)} >
+          <a href="#" id={"user-" + user.id} onClick={() => this.props.onDeleteUser(user.id)} >
             <Glyphicon glyph="trash"/> Delete
           </a>
         </td>
