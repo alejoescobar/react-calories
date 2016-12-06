@@ -12,7 +12,6 @@ class UserNav extends Component {
     this.state = {
       userEmail: ''
     }
-    console.log(cookie.load('userRole') === 'admin')
     this.handleLogout = this.handleLogout.bind(this)
   }
 

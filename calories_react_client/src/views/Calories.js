@@ -6,6 +6,7 @@ import DailyCalories from '../components/DailyCalories'
 import EntriesFilter from '../components/EntriesFilter'
 import { reject } from 'lodash'
 import moment from 'moment'
+import cookie from 'react-cookie'
 
 class Calories extends Component {
   constructor(props) {
@@ -25,10 +26,20 @@ class Calories extends Component {
     this.resetCaloriesEntries = this.resetCaloriesEntries.bind(this)
   }
 
+
   componentDidMount() {
     userRequests.getCaloriesEntries()
     .then((response) => {
       this.setState({ caloriesEntries: response.data })
+    }).catch((error) => {
+      if (error.response.status === 401) {
+        cookie.remove('userId')
+        cookie.remove('userEmail')
+        cookie.remove('userAuthToken')
+        cookie.remove('userRole')
+        cookie.remove('userCaloriesGoal')
+        browserHistory.push('/')
+      }
     })
   }
 

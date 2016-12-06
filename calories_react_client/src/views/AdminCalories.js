@@ -31,6 +31,10 @@ class AdminCalories extends Component {
     adminRequests.getUserCaloriesEntries(this.props.params.userId)
     .then((response) => {
       this.setState({ caloriesEntries: response.data })
+    }).catch((error) => {
+      if (error.response.status === 401) {
+        browserHistory.push('/calories')
+      }
     })
   }
 
