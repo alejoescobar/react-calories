@@ -32,7 +32,7 @@ class Calories extends Component {
     .then((response) => {
       this.setState({ caloriesEntries: response.data })
     }).catch((error) => {
-      if (error.response.status === 401) {
+      if (error.response && error.response.status === 401) {
         cookie.remove('userId')
         cookie.remove('userEmail')
         cookie.remove('userAuthToken')

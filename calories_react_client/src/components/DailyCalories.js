@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Table, ListGroup, ListGroupItem, Glyphicon } from 'react-bootstrap'
+import { Table, ListGroup, ListGroupItem, Glyphicon, Label } from 'react-bootstrap'
 import { Link } from 'react-router'
 import cookie from 'react-cookie'
 
@@ -30,7 +30,15 @@ class DailyCalories extends Component {
       <ListGroup>
         <li className="list-group-item">
           <h4>{this.props.day}</h4>
-          {dailyAmount < dailyCaloriesGoal ? 'success' : 'fail'}
+          <p>
+            {
+              dailyAmount <= dailyCaloriesGoal ?
+              <Label bsStyle="success">Success</Label> :
+              <Label bsStyle="danger">Fail</Label>
+            } &nbsp;
+            Goal: { dailyCaloriesGoal }, Calories Consumed: { dailyAmount }
+          </p>
+
           <Table responsive bordered>
             <thead>
               <tr>
