@@ -57,6 +57,7 @@ class Users extends Component {
               <th>Email</th>
               <th>Role</th>
               <th>Daily Calories Goal</th>
+              <th>Total entries</th>
               <th>Created At</th>
               <th colSpan="3">Options</th>
             </tr>

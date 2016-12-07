@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :require_admin_or_manager_permissions!
 
   def index
-    render json: User.all
+    render json: User.all.order(:email)
   end
 
   def show

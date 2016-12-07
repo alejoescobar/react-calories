@@ -36,8 +36,13 @@ class User < ApplicationRecord
     self.save
   end
 
+  def entries_count
+    self.calories_entries.count
+  end
+
   def as_json(opts)
     opts[:except] ||= [:password_digest]
+    opts[:methods] ||= [:entries_count]
     super
   end
 

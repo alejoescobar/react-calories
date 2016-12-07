@@ -23,6 +23,7 @@ class User extends Component {
         <td>{user.email}</td>
         <td>{user.role}</td>
         <td>{user.daily_calories_goal}</td>
+        <td>{user.entries_count}</td>
         <td>{moment(user.created_at).format('LLL')}</td>
         {renderShowLink()}
         <td>

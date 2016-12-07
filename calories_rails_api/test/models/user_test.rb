@@ -35,4 +35,10 @@ class UserTest < ActiveSupport::TestCase
     user.sign_out
     assert_not_equal previous_token, user.reload.auth_token
   end
+
+  test 'returns number of entries created by user' do
+    user = users(:user)
+    entries_count = user.entries_count
+    assert_equal entries_count, user.calories_entries.count
+  end
 end
