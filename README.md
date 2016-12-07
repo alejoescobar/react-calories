@@ -27,3 +27,5 @@ In your browser you can now navigate to `localhost:3000` and see the application
 ### Postman client
 
 Additionally from the tests done in the rails api, the endpoints can be tested using the following postman client [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/07c79744bd142a27f71d).
+
+To use the postman client you first need to obtain an `auth_token` using the `Sessions#create` endpoint. Once you have it, you can pass it in the `Authorization` header in every request.  
