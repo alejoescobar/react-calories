@@ -11,7 +11,7 @@ class User extends Component {
       if (cookie.load('userRole') === 'admin') {
         return(
           <td>
-            <Link to={{ pathname: `/admin/users/${user.id}/calories`, query: { userEmail: user.email }}}>
+            <Link to={{ pathname: `/admin/users/${user.id}/calories` }}>
             <Glyphicon glyph="eye-open"/> Show </Link>
           </td>
         )

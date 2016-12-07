@@ -9,7 +9,9 @@ class DailyCalories extends Component {
     const dailyAmount = this.props.caloriesEntries.reduce((sum, obj) =>
       sum + obj.calories_amount, 0
     )
-    const dailyCaloriesGoal = cookie.load('userCaloriesGoal')
+    const dailyCaloriesGoal = this.props.userCaloriesGoal ?
+                              this.props.userCaloriesGoal :
+                              cookie.load('userCaloriesGoal')
     if (this.props.filtered) {
       return (
         <p>

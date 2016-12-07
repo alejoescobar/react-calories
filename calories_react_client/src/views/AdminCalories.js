@@ -16,6 +16,8 @@ class AdminCalories extends Component {
       endDate: moment().format('L'),
       startTime: moment().startOf('day').format('HH:mm'),
       endTime: moment().endOf('day').format('HH:mm'),
+      userCaloriesGoal: 0,
+      userEmail: '',
       filtered: false
     }
     this.handleDelete = this.handleDelete.bind(this)
@@ -36,6 +38,14 @@ class AdminCalories extends Component {
       if (error.response.status === 401) {
         browserHistory.push('/calories')
       }
+    })
+    adminRequests.showUser(this.props.params.userId)
+    .then((response) => {
+      const user = response.data
+      this.setState({
+        userEmail: user.email,
+        userCaloriesGoal: user.daily_calories_goal
+      })
     })
   }
 
@@ -109,6 +119,7 @@ class AdminCalories extends Component {
                   key={index}
                   day={record.day}
                   caloriesEntries={record.entries}
+                  userCaloriesGoal={this.state.userCaloriesGoal}
                   filtered={this.state.filtered}
                   onEditCaloriesEntry={this.editCaloriesEntryPath}
                   onDeleteCaloriesEntry={this.handleDelete}/>
@@ -130,7 +141,7 @@ class AdminCalories extends Component {
           Create new entry
         </Button>
         <h1>Listing Calories</h1>
-        <p>{this.props.location.query.userEmail}</p>
+        <p>{this.state.userEmail}</p>
         <hr/>
         {calories}
       </div>
