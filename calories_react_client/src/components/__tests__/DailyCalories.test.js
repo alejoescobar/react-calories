@@ -1,6 +1,6 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import DailyCalories from './DailyCalories';
+import React from 'react'
+import { shallow } from 'enzyme'
+import DailyCalories from '../DailyCalories'
 
 it('renders without crashing', () => {
   const caloriesEntries = { day: 'Nov 30, 2016', entries: [] }
