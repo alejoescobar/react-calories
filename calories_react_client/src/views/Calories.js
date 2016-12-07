@@ -16,7 +16,8 @@ class Calories extends Component {
       startDate: moment().subtract(1, 'month').format('L'),
       endDate: moment().format('L'),
       startTime: moment().startOf('day').format('HH:mm'),
-      endTime: moment().endOf('day').format('HH:mm')
+      endTime: moment().endOf('day').format('HH:mm'),
+      filtered: false
     }
     this.handleDelete = this.handleDelete.bind(this)
     this.updateDateRanges = this.updateDateRanges.bind(this)
@@ -84,7 +85,7 @@ class Calories extends Component {
     const query = `${startDate}&${endDate}&${startTime}&${endTime}`
     userRequests.getCaloriesEntries(query)
     .then((response) => {
-      this.setState({ caloriesEntries: response.data })
+      this.setState({ caloriesEntries: response.data, filtered: true })
     })
   }
 
@@ -97,7 +98,7 @@ class Calories extends Component {
     })
     userRequests.getCaloriesEntries()
     .then((response) => {
-      this.setState({ caloriesEntries: response.data })
+      this.setState({ caloriesEntries: response.data, filtered: false })
     })
   }
 
@@ -108,6 +109,7 @@ class Calories extends Component {
                   key={index}
                   day={record.day}
                   caloriesEntries={record.entries}
+                  filtered={this.state.filtered}
                   onEditCaloriesEntry={this.editCaloriesEntryPath}
                   onDeleteCaloriesEntry={this.handleDelete}/>
       }

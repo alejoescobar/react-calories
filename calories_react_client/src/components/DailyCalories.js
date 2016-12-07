@@ -4,6 +4,32 @@ import { Link } from 'react-router'
 import cookie from 'react-cookie'
 
 class DailyCalories extends Component {
+
+  caloriesTotal() {
+    const dailyAmount = this.props.caloriesEntries.reduce((sum, obj) =>
+      sum + obj.calories_amount, 0
+    )
+    const dailyCaloriesGoal = cookie.load('userCaloriesGoal')
+    if (this.props.filtered) {
+      return (
+        <p>
+          Goal: { dailyCaloriesGoal }, Calories Consumed: { dailyAmount }
+        </p>
+      )
+    } else {
+      return(
+        <p>
+          {
+            dailyAmount <= dailyCaloriesGoal ?
+            <Label bsStyle="success">Success</Label> :
+            <Label bsStyle="danger">Fail</Label>
+          } &nbsp;
+          Goal: { dailyCaloriesGoal }, Calories Consumed: { dailyAmount }
+        </p>
+      )
+    }
+  }
+
   render() {
     const caloriesEntries = this.props.caloriesEntries.map((entry) =>
       <tr key={entry.id}>
@@ -22,23 +48,11 @@ class DailyCalories extends Component {
         </td>
       </tr>
     )
-    const dailyAmount = this.props.caloriesEntries.reduce((sum, obj) =>
-      sum + obj.calories_amount, 0
-    )
-    const dailyCaloriesGoal = cookie.load('userCaloriesGoal')
     return (
       <ListGroup>
         <li className="list-group-item">
           <h4>{this.props.day}</h4>
-          <p>
-            {
-              dailyAmount <= dailyCaloriesGoal ?
-              <Label bsStyle="success">Success</Label> :
-              <Label bsStyle="danger">Fail</Label>
-            } &nbsp;
-            Goal: { dailyCaloriesGoal }, Calories Consumed: { dailyAmount }
-          </p>
-
+          {this.caloriesTotal()}
           <Table responsive bordered>
             <thead>
               <tr>
