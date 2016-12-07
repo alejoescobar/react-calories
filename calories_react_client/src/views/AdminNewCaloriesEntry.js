@@ -10,7 +10,7 @@ class AdminNewCaloriesEntry extends Component {
     this.state = {
       title: '',
       caloriesAmount: 0,
-      date: moment().format('YYYY-MM-DDTkk:mm'),
+      date: moment().format('YYYY-MM-DDTHH:mm'),
       errors: []
     }
     this.updateTitle = this.updateTitle.bind(this)

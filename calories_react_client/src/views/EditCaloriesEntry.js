@@ -28,7 +28,7 @@ class EditCaloriesEntry extends Component {
         id: caloriesEntry.id,
         title: caloriesEntry.title,
         caloriesAmount: caloriesEntry.calories_amount,
-        date: moment(`${caloriesEntry.day} ${caloriesEntry.time}`).format('YYYY-MM-DDTkk:mm')
+        date: moment(`${caloriesEntry.day} ${caloriesEntry.time}`).format('YYYY-MM-DDTHH:mm')
       })
     })
   }
