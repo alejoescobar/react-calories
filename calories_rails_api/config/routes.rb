@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   # Admin routes
   namespace :admin do
     resources :users do
@@ -11,7 +10,7 @@ Rails.application.routes.draw do
   resources :calories_entries
 
   # Auth routes
-  resources :registrations, only: [:create]
+  resources :registrations, only: [:create, :update]
   resources :sessions, only: [:create] do
     delete :destroy, on: :collection
   end

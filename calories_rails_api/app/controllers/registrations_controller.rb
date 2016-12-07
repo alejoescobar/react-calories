@@ -9,6 +9,15 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def update
+    user = current_user
+    if user.update(user_params)
+      render json: user, status: :ok
+    else
+      render json: { errors: calories_entry.errors.full_messages }, status: :bad_request
+    end
+  end
+
   private
 
     def user_params

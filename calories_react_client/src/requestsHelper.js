@@ -24,6 +24,14 @@ const userRequests = {
     })
   },
 
+  updateInfo: (id, caloriesGoal) => {
+    return axios.put(`/registrations/${id}`, {
+      user: {
+        daily_calories_goal: caloriesGoal
+      }
+    })
+  },
+
   login: (email, password) => {
     return axios.post('/sessions', {
       session: {

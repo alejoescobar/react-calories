@@ -7,6 +7,7 @@ import Calories from './views/Calories'
 import UserNav from './views/UserNav'
 import NewCaloriesEntry from './views/NewCaloriesEntry'
 import EditCaloriesEntry from './views/EditCaloriesEntry'
+import Settings from './views/Settings'
 import Users from './views/Users'
 import NewUser from './views/NewUser'
 import EditUser from './views/EditUser'
@@ -28,6 +29,7 @@ ReactDOM.render(
         <Route path="/calories" component={Calories} />
         <Route path="/calories/new" component={NewCaloriesEntry} />
         <Route path="/calories/:entryId/edit" component={EditCaloriesEntry} />
+        <Route path="/settings" component={Settings} />
         <Route path="/admin/users" component={Users} />
         <Route path="/admin/users/new" component={NewUser} />
         <Route path="/admin/users/edit/:userId" component={EditUser} />

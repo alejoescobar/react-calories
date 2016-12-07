@@ -59,7 +59,9 @@ class UserNav extends Component {
               </LinkContainer>
               {adminLink()}
               <NavDropdown eventKey={3} title={this.state.userEmail} id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1}>My Settings</MenuItem>
+                <LinkContainer to={{ pathname: '/settings'}}>
+                  <MenuItem eventKey={3.1}>My Settings</MenuItem>
+                </LinkContainer>
               </NavDropdown>
               <NavItem eventKey={2} onClick={this.handleLogout}>Logout</NavItem>
             </Nav>

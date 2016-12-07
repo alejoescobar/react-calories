@@ -13,4 +13,14 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
     assert_equal 2500, user.daily_calories_goal
   end
 
+  test 'PUT#update updates user info' do
+    user = users(:user)
+    put registration_url(user.id), xhr: true, as: :json,
+    params: { user: { daily_calories_goal: 3000 } },
+    headers: { "HTTP_AUTHORIZATION" => user.auth_token }
+    assert_response :success
+    body = JSON.parse(response.body)
+    assert_equal 3000, body['daily_calories_goal']
+  end
+
 end
