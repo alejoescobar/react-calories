@@ -4,7 +4,7 @@
 
 This project is built using [rails-api](http://edgeguides.rubyonrails.org/api_app.html) as the backend, using a postgresql database. And a boilerplate of [react](https://github.com/facebookincubator/create-react-app/) as the client.
 
-It is currently reachable online at [this url](top-calories-client.herokuapp.com).
+It is currently reachable online at [this url](https://top-calories-client.herokuapp.com/).
 
 ### Running locally
 
