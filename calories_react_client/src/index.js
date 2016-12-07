@@ -13,6 +13,7 @@ import EditUser from './views/EditUser'
 import AdminCalories from './views/AdminCalories'
 import NewAdminCaloriesEntry from './views/AdminNewCaloriesEntry'
 import EditAdminCaloriesEntry from './views/AdminEditCaloriesEntry'
+import NotFound from './views/NotFound'
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -35,6 +36,7 @@ ReactDOM.render(
         <Route path="/admin/users/:userId/calories/:id/edit" component={EditAdminCaloriesEntry} />
       </Route>
     </Route>
+    <Route path="*" component={NotFound} />
   </Router>,
   document.getElementById('root')
 );
