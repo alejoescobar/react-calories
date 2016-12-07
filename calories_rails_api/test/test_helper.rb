@@ -8,9 +8,8 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Ensure that node server is running react app
-  # TODO: Change when create-react-app allows port specification
   Dir.chdir("../calories_react_client") do
-    system "REACT_APP_TEST=true npm start | cat > /dev/null 2>&1 &"
+    system "PORT=4000 REACT_APP_TEST=true npm start | cat > /dev/null 2>&1 &"
   end
 
   Capybara.register_driver :selenium do |app|
@@ -18,7 +17,7 @@ class ActiveSupport::TestCase
   end
 
   Capybara.server_port = 5000
-  Capybara.app_host = 'http://localhost:3000'
+  Capybara.app_host = 'http://localhost:4000'
 
   class ActionDispatch::IntegrationTest
     include Capybara::DSL
@@ -65,7 +64,7 @@ class ActiveSupport::TestCase
   end
 
   at_exit do
-    system 'lsof -t -i tcp:3000 | xargs kill'
+    system 'lsof -t -i tcp:4000 | xargs kill'
   end
 
 end
