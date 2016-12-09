@@ -15,6 +15,8 @@ class CaloriesEntry < ApplicationRecord
   belongs_to :user
 
   validates_presence_of :date, :calories_amount, :title
+  validates :calories_amount, numericality: { greater_than: 0 }
+
 
   scope :group_by_day, -> {
     all.group_by { |entry| entry.date.to_date.strftime('%a, %e %b %Y') }

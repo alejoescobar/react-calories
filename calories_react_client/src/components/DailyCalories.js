@@ -12,10 +12,27 @@ class DailyCalories extends Component {
     const dailyCaloriesGoal = this.props.userCaloriesGoal ?
                               this.props.userCaloriesGoal :
                               cookie.load('userCaloriesGoal')
+    const caloriesDifference = () => {
+      const difference = dailyCaloriesGoal - dailyAmount
+      if (difference < 0) {
+        return (
+          <span>
+            Extra Calories: { difference * -1 }
+          </span>
+        )
+      } else {
+        return(
+          <span>
+            Remaining Calories: { difference }
+          </span>
+        )
+      }
+    }
     if (this.props.filtered) {
       return (
         <p>
-          Goal: { dailyCaloriesGoal }, Calories Consumed: { dailyAmount }
+          Goal: { dailyCaloriesGoal }, Calories Consumed: { dailyAmount },
+          Calories remaining: { dailyCaloriesGoal - dailyAmount }
         </p>
       )
     } else {
@@ -26,7 +43,8 @@ class DailyCalories extends Component {
             <Label bsStyle="success">Success</Label> :
             <Label bsStyle="danger">Fail</Label>
           } &nbsp;
-          Goal: { dailyCaloriesGoal }, Calories Consumed: { dailyAmount }
+          Goal: { dailyCaloriesGoal }, Calories Consumed: { dailyAmount },
+          &nbsp; { caloriesDifference() }
         </p>
       )
     }
