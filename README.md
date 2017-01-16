@@ -1,4 +1,4 @@
-## Toptal calories Project
+## Calories Project
 
 ### General Remarks
 
